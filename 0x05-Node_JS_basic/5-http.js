@@ -6,11 +6,12 @@ const app = http.createServer((req, res) => {
   res.statusCode = 200;
   res.setHeader('Content-Type', 'text/plain');
   if (req.url === '/') {
-    res.end('Hello Holberton School!');
+    res.write('Hello Holberton School!');
   } else if (req.url === '/students') {
+    res.write('This is the list of our students\n');
     countStudents(process.argv[2])
       .then((data) => {
-        res.end(`This is the list of our students\n${data.join('\n')}`);
+        res.end(data.join('\n'));
       })
       .catch((error) => {
         res.end(error.message);
