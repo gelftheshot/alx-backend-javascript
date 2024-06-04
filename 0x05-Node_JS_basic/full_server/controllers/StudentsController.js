@@ -5,9 +5,12 @@ class StudentsController {
     readDatabase(database)
       .then((data) => {
         let message = 'This is the list of our students\n';
-        for (const field in data) {
-          if (field) {
-            message += `Number of students in ${field}: ${data[field].length}. List: ${data[field].join(',')}\n`;
+        const fields = Object.keys(data);
+        for (let i = 0; i < fields.length; i += 1) {
+          const field = fields[i];
+          message += `Number of students in ${field}: ${data[field].length}. List: ${data[field].join(', ')}`;
+          if (i < fields.length - 1) {
+            message += '\n';
           }
         }
         response.status(200).send(message);
@@ -24,7 +27,7 @@ class StudentsController {
       readDatabase(database)
         .then((data) => {
           const students = data[major] || [];
-          response.send(`List: ${students.join(',')}`);
+          response.send(`List: ${students.join(', ')}`);
         })
         .catch(() => response.send(500, 'Cannot load the database'));
     }
