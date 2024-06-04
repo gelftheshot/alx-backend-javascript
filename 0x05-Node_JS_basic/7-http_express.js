@@ -8,13 +8,15 @@ app.get('/', (req, res) => {
 });
 
 app.get('/students', (req, res) => {
-  res.write('This is the list of our students\n');
+  let response = 'This is the list of our students\n';
   countStudents(process.argv[2])
     .then((data) => {
-      res.send(data.join('\n'));
+      response += data.join('\n');
+      res.send(response);
     })
     .catch((error) => {
-      res.send(error.message);
+      response += error.message;
+      res.send(response);
     });
 });
 
