@@ -9,3 +9,5 @@ const port = 1245;
 app.listen(port, () => {
   console.log('...');
 });
+
+export default app;
