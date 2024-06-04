@@ -7,5 +7,5 @@ const server = http.createServer((req, res) => {
 const port = 1245;
 
 server.listen(port, () => {
-  console.log('...')
+  console.log('...');
 });
