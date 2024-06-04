@@ -12,9 +12,7 @@ class StudentsController {
         }
         response.status(200).send(message);
       })
-      .catch((err) => {
-        response.status(500).send(err);
-      });
+      .catch(() => response.send(500, 'Cannot load the database'));
   }
 
   static getAllStudentsByMajor(request, response, database) {
@@ -28,9 +26,7 @@ class StudentsController {
           const students = data[major] || [];
           response.send(`List: ${students.join(',')}`);
         })
-        .catch((err) => {
-          response.status(500).send(err);
-        });
+        .catch(() => response.send(500, 'Cannot load the database'));
     }
   }
 }
