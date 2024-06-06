@@ -1,69 +1,40 @@
-const calculateNumber = require('./0-calcul.js')
-const assert = require('assert');
+import assert from 'assert';
+import calculateNumber from './0-calcul.js';
 
-try{
-  assert.strictEqual(calculateNumber(1, 3), 4);
-  console.log('Test passed');
-}catch(error){
-  console.log('Test failed');
-}
+describe('calculateNumber', () => {
+  it('should return sum of integers', () => {
+    assert.strictEqual(calculateNumber(1, 3), 4);
+    assert.strictEqual(calculateNumber(1, -1), 0);
+    assert.strictEqual(calculateNumber(1, -3), -2);
+  });
 
-try{
-  assert.strictEqual(calculateNumber(1, 3.7), 5);
-  console.log('Test passed');
-}catch(error){
-  console.log('Test failed');
-}
+  it('should round floats', () => {
+    assert.strictEqual(calculateNumber(1, 3.7), 5);
+    assert.strictEqual(calculateNumber(1.2, 3.7), 5);
+    assert.strictEqual(calculateNumber(1.5, 3.7), 6);
+    assert.strictEqual(calculateNumber(0.1, 0), 0);
+    assert.strictEqual(calculateNumber(1.4, -4.5), -3);
+  });
 
+  it('should return the rounded number if only one is provided', () => {
+    assert.strictEqual(calculateNumber(2), 2);
+    assert.strictEqual(calculateNumber(2.7), 3);
+  });
 
-try{
-  assert.strictEqual(calculateNumber(1.2, 3.7), 5);
-  console.log('Test passed');
-}catch{
-  console.log('Test failed');
-}
+  it('should cast non-numbers into numbers', () => {
+    assert.strictEqual(calculateNumber(true, '3'), 4);
+    assert.strictEqual(calculateNumber(1, '3.7'), 5);
+    assert.strictEqual(calculateNumber('1.2', 3.7), 5);
+  });
 
-try{
-  assert.strictEqual(calculateNumber(-1, -2), -3);
-  console.log('Test passed');
-}catch(error){
-  console.log('Test failed');
-}
-
-try{
-  assert.strictEqual(calculateNumber(-1.5, -3.7), -5);
-  console.log('Test passed');
-}catch(error){
-  console.log('Test failed');
-}
-
-
-try{
-  assert.strictEqual(calculateNumber(0, 0), 0);
-}catch(error){
-  console.log('Test failed');
-}
-
-try{
-  assert.strictEqual(calculateNumber(0.1, 0.3), 0);
-}catch(error){
-  console.log('Test failed');
-}
-
-try{
-  assert.strictEqual(calculateNumber(0.1, 0.6), 1);
-}catch(error){
-  console.log('Test failed');
-}
-
-try{
-  assert.strictEqual(calculateNumber(0.9, 0), 1);
-}catch(error){
-  console.log('Test failed');
-}
-
-try{
-  assert.strictEqual(calculateNumber(0.499, 0.1), 0);
-}catch(error){
-  console.log('Test failed');
-}
+  it('should throw typeerror if either param cannot be coerced to a number', () => {
+    assert.throws(() => calculateNumber('hello'), {
+      name: 'TypeError',
+      message: 'Parameters must be numbers'
+    });
+    assert.throws(() => calculateNumber(1.2, 'dog'), {
+      name: 'TypeError',
+      message: 'Parameters must be numbers'
+    });
+  });
+});
