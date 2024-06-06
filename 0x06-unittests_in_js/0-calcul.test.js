@@ -1,5 +1,4 @@
 import assert from 'assert';
-import mocha from 'mocha';
 import calculateNumber from './0-calcul.js';
 
 describe('calculateNumber', () => {
