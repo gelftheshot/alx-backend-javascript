@@ -5,14 +5,23 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "test": "mocha -r esm **/*.test.js"
+    "test": "npx mocha"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "chai": "^5.1.1",
-    "esm": "^3.2.25",
-    "mocha": "^10.4.0"
+    "chai": "latest",
+    "esm": "latest",
+    "mocha": "latest"
+  },
+  "dependencies": {
+    "chai": "latest",
+    "eslint": "latest",
+    "eslint-config-airbnb-base": "latest",
+    "eslint-plugin-import": "latest",
+    "eslint-plugin-jest": "latest",
+    "mocha": "latest",
+    "sinon": "latest"
   }
 }
