@@ -1,7 +1,5 @@
-import calculateNumber from './0-calcul.js';
 import assert from 'assert';
-import { describe, it } from 'mocha';
-
+import calculateNumber from './0-calcul.js';
 
 describe('calculateNumber', function() {
   it('should return 4 when inputs are 1 and 3', function() {
