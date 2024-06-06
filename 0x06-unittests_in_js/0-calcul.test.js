@@ -1,5 +1,7 @@
-import assert from 'assert';
-import calculateNumber from './0-calcul.js';
+const assert = require('assert');
+const mocha = require('mocha');
+
+const calculateNumber = require('./0-calcul');
 
 describe('calculateNumber', () => {
   it('should return sum of integers', () => {
