@@ -30,10 +30,7 @@ describe('calculateNumber', () => {
     assert.strictEqual(calculateNumber('DIVIDE', 1.2, 3.7), 0.25);
   });
   it('should throw an error if the second number is 0 and the type is DIVIDE', () => {
-    assert.throws(() => calculateNumber('DIVIDE', 1, 0), {
-      name: 'Error',
-      message: 'Cannot divide by 0',
-    });
+    assert.strictEqual(calculateNumber('DIVIDE', 1, 0), 'ERROR');
   });
   it('should throw an error if the arguments are not numbers', () => {
     assert.throws(() => calculateNumber('DIVIDE', 'hello', 'world'), {

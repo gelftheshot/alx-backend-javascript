@@ -14,7 +14,7 @@ module.exports = function calculateNumber(type, a = 0, b = 0) {
 
   if (type === 'DIVIDE') {
     if (bNum === 0) {
-      throw Error('Cannot divide by 0');
+      return 'ERROR'
     }
     return aNum / bNum;
   }
