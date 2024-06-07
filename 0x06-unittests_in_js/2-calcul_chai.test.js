@@ -9,44 +9,44 @@ describe('calculateNumber', function () {
   });
 
   describe('SUM first round', function () {
-    it('should return 8', function () {
-      chai.expect(calculateNumber('SUM', 2.5, 5.5)).to.equal(8);
+    it('should return 7', function () {
+      chai.expect(calculateNumber('SUM', 2.7, 4)).to.equal(7);
     });
   });
 
   describe('SUM second round ', function () {
-    it('should return 6', function () {
-      chai.expect(calculateNumber('SUM', 4, 2)).to.equal(6);
+    it('should return 7', function () {
+      chai.expect(calculateNumber('SUM', 4, 2.7)).to.equal(7);
     });
   });
 
   describe('SUM both round', function () {
-    it('should return 7', function () {
-      chai.expect(calculateNumber('SUM', 3.5, 3.5)).to.equal(7);
+    it('should return 8', function () {
+      chai.expect(calculateNumber('SUM', 3.5, 4.4)).to.equal(8);
     });
   });
 
   describe('SUBTRACT no round', function () {
-    it('should return 4', function () {
-      chai.expect(calculateNumber('SUBTRACT', 7, 3)).to.equal(4);
+    it('should return 1', function () {
+      chai.expect(calculateNumber('SUBTRACT', 5, 4)).to.equal(1);
     });
   });
 
   describe('SUBTRACT first round', function () {
-    it('should return -2', function () {
-      chai.expect(calculateNumber('SUBTRACT', 2.5, 4.5)).to.equal(-2);
+    it('should return -1', function () {
+      chai.expect(calculateNumber('SUBTRACT', 2.7, 4)).to.equal(-1);
     });
   });
 
   describe('SUBTRACT second round', function () {
-    it('should return 2', function () {
-      chai.expect(calculateNumber('SUBTRACT', 4.5, 2.5)).to.equal(2);
+    it('should return 1', function () {
+      chai.expect(calculateNumber('SUBTRACT', 4, 2.7)).to.equal(1);
     });
   });
 
   describe('SUBTRACT both round', function () {
-    it('should return -3', function () {
-      chai.expect(calculateNumber('SUBTRACT', 1.5, 4.5)).to.equal(-3);
+    it('should return 0', function () {
+      chai.expect(calculateNumber('SUBTRACT', 3.5, 4.4)).to.equal(0);
     });
   });
 
@@ -57,26 +57,26 @@ describe('calculateNumber', function () {
   });
 
   describe('DIVIDE first round', function () {
-    it('should return 4', function () {
-      chai.expect(calculateNumber('DIVIDE', 10, 2.5)).to.equal(4);
+    it('should return 0.75', function () {
+      chai.expect(calculateNumber('DIVIDE', 2.7, 4)).to.equal(0.75);
     });
   });
 
   describe('DIVIDE second round', function () {
-    it('should return 0.5', function () {
-      chai.expect(calculateNumber('DIVIDE', 2.5, 5)).to.equal(0.5);
+    it('should return 1.33', function () {
+      chai.expect(calculateNumber('DIVIDE', 4, 2.7)).to.closeTo(1.33, 0.01);
     });
   });
 
   describe('DIVIDE both round', function () {
-    it('should return 0.3', function () {
-      chai.expect(calculateNumber('DIVIDE', 1.5, 5)).to.equal(0.3);
+    it('should return 1', function () {
+      chai.expect(calculateNumber('DIVIDE', 3.5, 4.4)).to.equal(1);
     });
   });
 
   describe('DIVIDE Error', function () {
     it('should return Error', function () {
-      chai.expect(calculateNumber('DIVIDE', 1.4, 0)).to.equal('Error');
+      chai.expect(calculateNumber('DIVIDE', 3.5, 0)).to.equal('ERROR');
     });
   });
 });
