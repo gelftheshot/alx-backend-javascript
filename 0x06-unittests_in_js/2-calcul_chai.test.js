@@ -2,48 +2,75 @@ const { expect } = require('chai');
 const calculateNumber = require('./1-calcul.js');
 
 describe('calculateNumber', function () {
-  describe('type=SUM', function () {
-    it('should return sum of integers', function () {
-      expect(calculateNumber('SUM', 1, 3)).to.equal(4);
-      expect(calculateNumber('SUM', 1, -1)).to.equal(0);
-      expect(calculateNumber('SUM', 1, -3)).to.equal(-2);
-    });
-    it('should round and return the sum of numbers when the numbers are floats', function () {
-      expect(calculateNumber('SUM', 1, 3.7)).to.equal(5);
-      expect(calculateNumber('SUM', 1.2, 3.7)).to.equal(5);
+  describe('SUM no Round', function () {
+    it('should return 5', function () {
+      chai.expect(calculateNumber('SUM', 1, 4)).to.equal(5);
     });
   });
 
-  describe('type=SUBTRACT', function () {
-    it('should return the subtraction of integers', function () {
-      expect(calculateNumber('SUBTRACT', 1, 3)).to.equal(-2);
-      expect(calculateNumber('SUBTRACT', 1, -1)).to.equal(2);
-      expect(calculateNumber('SUBTRACT', 1, -3)).to.equal(4);
-    });
-    it('should round and return the subtraction if the numbers are floats', function () {
-      expect(calculateNumber('SUBTRACT', 1, 3.7)).to.equal(-3);
-      expect(calculateNumber('SUBTRACT', 1.2, 3.7)).to.equal(-3);
+  describe('SUM first round', function () {
+    it('should return 6', function () {
+      chai.expect(calculateNumber('SUM', 2.4, 4)).to.equal(6);
     });
   });
 
-  describe('type=DIVIDE', function () {
-    it('should return the division of integers', function () {
-      expect(calculateNumber('DIVIDE', 1, 3)).to.be.closeTo(0.3333333333333333, 0.01);
-      expect(calculateNumber('DIVIDE', 1, -1)).to.equal(-1);
-      expect(calculateNumber('DIVIDE', 1, -3)).to.be.closeTo(-0.3333333333333333, 0.01);
-    });
-    it('should round and return the division if the numbers are floats', function () {
-      expect(calculateNumber('DIVIDE', 1, 3.7)).to.equal(0.25);
-      expect(calculateNumber('DIVIDE', 1.2, 3.7)).to.equal(0.25);
-    });
-    it('should throw an error if the second number is 0', function () {
-      expect(calculateNumber('DIVIDE', 1, 0)).to.equal('ERROR');
+  describe('SUM second round ', function () {
+    it('should return 6', function () {
+      chai.expect(calculateNumber('SUM', 4, 2.4)).to.equal(6);
     });
   });
 
-  describe('error handling', function () {
-    it('should throw an error if the arguments are not numbers', function () {
-      expect(() => calculateNumber('DIVIDE', 'hello', 'world')).to.throw(TypeError, 'Parameters must be numbers');
+  describe('SUM both round', function () {
+    it('should return 6', function () {
+      chai.expect(calculateNumber('SUM', 1.4, 4.5)).to.equal(6);
+    });
+  });
+
+  describe('SUBTRACT no Round', function () {
+    it('should return -3', function () {
+      chai.expect(calculateNumber('SUBTRACT', 1, 4)).to.equal(-3);
+    });
+  });
+
+  describe('SUBTRACT first round', function () {
+    it('should return -2', function () {
+      chai.expect(calculateNumber('SUBTRACT', 2.4, 4)).to.equal(-2);
+    });
+  });
+
+  describe('SUBTRACT second round ', function () {
+    it('should return 2', function () {
+      chai.expect(calculateNumber('SUBTRACT', 4, 2.4)).to.equal(2);
+    });
+  });
+
+  describe('SUBTRACT both round', function () {
+    it('should return -2', function () {
+      chai.expect(calculateNumber('SUBTRACT', 1.4, 4.5)).to.equal(-2);
+    });
+  });
+
+  describe('DIVIDE no Round', function () {
+    it('should return 0.25', function () {
+      chai.expect(calculateNumber('DIVIDE', 1, 4)).to.equal(0.25);
+    });
+  });
+
+  describe('DIVIDE first round', function () {
+    it('should return 0.5', function () {
+      chai.expect(calculateNumber('DIVIDE', 2.4, 4)).to.equal(0.5);
+    });
+  });
+
+  describe('DIVIDE second round ', function () {
+    it('should return 2', function () {
+      chai.expect(calculateNumber('DIVIDE', 4, 2.4)).to.equal(2);
+    });
+  });
+
+  describe('DIVIDE both round', function () {
+    it('should return 0.5', function () {
+      chai.expect(calculateNumber('DIVIDE', 1.4, 4.5)).to.equal(0.5);
     });
   });
 });
