@@ -1,4 +1,4 @@
-module.exports = function calculateNumber(a, b = 0, type) {
+module.exports = function calculateNumber(type, a = 0, b = 0) {
   const aNum = Math.round(Number(a));
   const bNum = Math.round(Number(b));
   if (Number.isNaN(aNum) || Number.isNaN(bNum))
