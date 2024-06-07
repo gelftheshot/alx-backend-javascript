@@ -2,7 +2,7 @@ const { expect } = require('chai');
 const calculateNumber = require('./1-calcul.js');
 
 describe('calculateNumber', function () {
-  describe('SUM no Round', function () {
+  describe('type=SUM', function () {
     it('should return sum of integers', function () {
       expect(calculateNumber('SUM', 1, 3)).to.equal(4);
       expect(calculateNumber('SUM', 1, -1)).to.equal(0);
@@ -14,7 +14,7 @@ describe('calculateNumber', function () {
     });
   });
 
-  describe('SUBTRACT no Round', function () {
+  describe('type=SUBTRACT', function () {
     it('should return the subtraction of integers', function () {
       expect(calculateNumber('SUBTRACT', 1, 3)).to.equal(-2);
       expect(calculateNumber('SUBTRACT', 1, -1)).to.equal(2);
@@ -26,7 +26,7 @@ describe('calculateNumber', function () {
     });
   });
 
-  describe('DIVIDE no Round', function () {
+  describe('type=DIVIDE', function () {
     it('should return the division of integers', function () {
       expect(calculateNumber('DIVIDE', 1, 3)).to.be.closeTo(0.3333333333333333, 0.01);
       expect(calculateNumber('DIVIDE', 1, -1)).to.equal(-1);
