@@ -30,7 +30,7 @@ describe('calculateNumber', () => {
     expect(calculateNumber('DIVIDE', 1.2, 3.7)).to.equal(0.25);
   });
   it('should throw an error if the second number is 0 and the type is DIVIDE', () => {
-    expect(() => calculateNumber('DIVIDE', 1, 0)).to.throw(Error, 'Cannot divide by 0');
+    expect(calculateNumber('DIVIDE', 1, 0)).to.equal('ERROR');
   });
   it('should throw an error if the arguments are not numbers', () => {
     expect(() => calculateNumber('DIVIDE', 'hello', 'world')).to.throw(TypeError, 'Parameters must be numbers');
